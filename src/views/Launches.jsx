@@ -14,27 +14,17 @@ class LaunchesView extends Component {
 
     if (!launchCollection || launchCollection.fetching) {
       return <div> LOADING </div>;
-    }
-
-    if (!launchCollection.launches.length) {
+    } else if (!launchCollection.launches.length) {
       return <div> NO DATA </div>;
+    } else {    
+      return (
+      <ul>
+        {launchCollection.launches.map( (launch) =>
+          <Launch {...{ key: launch.launch_id, launch }} />
+        )}
+      </ul>
+      );
     }
-
-    let launches = [];
-
-    for (let i = 0; i < launchCollection.launches.length; i++) {
-      const launch = launchCollection.launches[i];
-
-      launches.push(
-        <Launch {...{
-          key: launch.launch_id,
-          launch
-        }} />
-
-      )
-    }
-
-    return <ul>{launches}</ul>;
   }
 
   render() {
