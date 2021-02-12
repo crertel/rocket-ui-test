@@ -11,7 +11,7 @@ class LaunchesView extends Component {
 
   getContent() {
     const { launchCollection } = this.props;
-
+    
     if (!launchCollection || launchCollection.fetching) {
       return <div> LOADING </div>;
     } else if (!launchCollection.launches.length) {
@@ -20,7 +20,9 @@ class LaunchesView extends Component {
       return (
       <ul>
         {launchCollection.launches.map( (launch) =>
-          <Launch {...{ key: launch.launch_id, launch }} />
+          <li key={`${launch.flight_number}  ${launch.mission_name}`}>
+            <Launch {...{launch}}/>
+          </li>
         )}
       </ul>
       );
