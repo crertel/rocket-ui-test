@@ -5,12 +5,13 @@ import Launch from '../components/Launch';
 
 class LaunchesView extends Component {
   componentDidMount() {
-    const { dispatch, launchesCollection } = this.props;
+    const { dispatch, launchesCollection } = this.props;    
     fetchLaunchesIfNeeded({ dispatch, launchesCollection });
   }
 
   getContent() {
-    const { launchCollection } = this.props;
+    const { launchCollection } = this.props;    
+    const { currentLaunch } = launchCollection;
     
     if (!launchCollection || launchCollection.fetching) {
       return <div> LOADING </div>;
@@ -18,13 +19,15 @@ class LaunchesView extends Component {
       return <div> NO DATA </div>;
     } else {    
       return (
-      <ul>
-        {launchCollection.launches.map( (launch) =>
-          <li key={`${launch.flight_number}  ${launch.mission_name}`}>
-            <Launch {...{launch}}/>
-          </li>
-        )}
-      </ul>
+      <div>        
+        <ul>
+          {launchCollection.launches.map( (launch) =>
+            <li key={`${launch.flight_number}  ${launch.mission_name}`}>
+              <Launch {...{launch, showDetails: currentLaunch == launch.flight_number}}/>
+            </li>
+          )}
+        </ul>
+      </div>
       );
     }
   }
