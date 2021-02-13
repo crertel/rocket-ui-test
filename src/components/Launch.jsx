@@ -7,6 +7,7 @@ class Launch extends Component {
   render() {
     const {launch, setLaunch, showDetails} = this.props;
     const handleClick = () => {
+      // if we're showing the details already, clicking should set current launch to empty
       setLaunch( showDetails? "" : launch.flight_number);
     };    
         
