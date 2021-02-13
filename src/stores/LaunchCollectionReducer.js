@@ -16,15 +16,6 @@ const actionHandlers = {
     fetching: false,
     launches: [...state.launches, ...action.payload.launches]
   }),
-  [ACTIONS.REQUEST_LAUNCH_DETAILS]: ({ state }) => ({
-    ...state,
-    fetching: true
-  }),
-  [ACTIONS.RECEIVE_LAUNCH_DETAILS]: ({ state, action }) => ({
-    ...state,
-    fetching: false,
-    launchDetails: [...state.launchDetails, ...action.payload.launchDetails]
-  }),
   [ACTIONS.SET_LAUNCH]: ( {state, action}) => ({
     ...state,
     currentLaunch: action.id

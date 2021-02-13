@@ -7,7 +7,7 @@ class LaunchDetails extends Component {
     const { launch } = this.props;            
     return   (
         <div> 
-            { /*JSON.stringify(launch)*/ "AAAAAAAH"}
+            { JSON.stringify(launch) }
         </div>
     );
   }

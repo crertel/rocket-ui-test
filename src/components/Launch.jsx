@@ -13,7 +13,7 @@ class Launch extends Component {
       <div> Flight Number: { launch.flight_number } </div>
       {showDetails?
         <LaunchDetails {...{launch}}/>
-      : <div> no deets </div>
+      : <div></div>
       }
       </div>;
   }
